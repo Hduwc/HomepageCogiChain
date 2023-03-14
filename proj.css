@@ -347,6 +347,24 @@ img{
     .text1 {
         justify-content: space-between;
     }
+    .header__navbar-list1 {
+        border: 1px solid #5142FC;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+    }
+    .header__navbar-list1 li .button {
+        display:none;
+    }
+    .header__navbar-list1 li a img {
+        padding-left: 10px;
+        padding-top: 10px;
+        width: 20px;
+        height: 20px;
+        top: 10px;
+        left: 10px;
+    }
   }
 
 
