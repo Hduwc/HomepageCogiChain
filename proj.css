@@ -1,7 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: 'Urbanist';
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .header {
     background-color: #0f0f12;
@@ -64,7 +64,6 @@
     line-height: 15px;
     font-style: bold;
     text-align: left;
-    font-family: 'Urbanist';
     text-decoration: none;
 }
 .header__navbar-list1:before {
@@ -125,7 +124,6 @@
     grid-area: text1;
 }
 .item1 {
-    font-family: 'Urbanist';
     font-size: 56px;
     font-weight: 500;
     line-height: 68px;
@@ -133,7 +131,6 @@
     text-align: left;
 }
 .item4 {
-    font-family: 'Urbanist';
     font-size: 20px;
     font-weight: 400;
     line-height: 26px;
@@ -170,13 +167,15 @@
     font-size: 45px;
     margin-left: 100px;
 }
+#dong2 {
+    margin-left: 100px;
+}
 #dong2 p{
     font-size: 45px;
     /* background: linear-gradient(to top right, #703794, #7852d1, #60bfdb); */
     -webkit-text-stroke: 1px rgb(36, 146, 190);
     -webkit-text-fill-color: transparent;
     margin-top: 10px;
-    margin-left: 100px;
 }
 /* @supports (-webkit-text-stroke: 5px rgb(76, 22, 163)) {
      #dong2 p{
@@ -187,8 +186,13 @@
     margin-left: 105px;
 }
 #dong3 p{
-    font-size: 25px;
     margin-top: 10px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 42px;
+    letter-spacing: 0em;
+    /* text-align: left; */
+
 }
 #dong4 {
     
@@ -286,7 +290,6 @@ img{
 .community__footer-item a {
     text-decoration: none;
     margin-top: 15px;
-    font-family: 'Urbanist';
     font-size: 16px;
     font-weight: 400;
     line-height: 22px;
@@ -322,7 +325,7 @@ img{
     margin-top: 3px;  
   }
 
-  @media screen and (max-width: 940px){      
+@media screen and (max-width: 940px){      
     #toggle {
         display: block;
     }
@@ -369,6 +372,31 @@ img{
         text-align: center;
     }
   }
+
+@media screen and (max-width: 570px){
+    #form_submit {
+        max-width: 100%;
+        justify-content: center;
+        margin-left: 0px;
+    }
+    #dong1, #dong2, #dong3, #dong4 {
+        margin-left: 20px;
+    }  
+    .item1 {
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 40px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+    .item2 {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 40px;
+        letter-spacing: 0em;
+        text-align: left;
+    }    
+}
 
 
 
