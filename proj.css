@@ -4,22 +4,22 @@
     font-family: 'Urbanist';
 }
 .header {
-    height: 60px;
     background-color: #0f0f12;
     opacity: 0.9;
 }
 .header__navbar {
     display: flex;
     justify-content: space-between;
-    padding: 8px 0;
-    height: 64px;
+    height: 60px;
+    padding-top: 8px;
 }
 .header__navbar-listt {
     list-style: none;
     padding-left: 0px;
     margin: 0 auto;
     display: flex;
-}.header__navbar-listt li a:hover {
+}
+.header__navbar-listt li a:hover {
     color: #E250E5; 
     transition: all 0.3s;
 }
@@ -55,9 +55,7 @@
     padding-top: 9px;
     padding-left: 25px;    
 }
-.header__navbar-list1 li a{
-    text-decoration: none;
-}  
+ 
 .header__navbar-link, .button {
     font-size: 1rem;
     display: inline-block;
@@ -67,6 +65,7 @@
     font-style: bold;
     text-align: left;
     font-family: 'Urbanist';
+    text-decoration: none;
 }
 .header__navbar-list1:before {
     content: "";
@@ -111,7 +110,7 @@
     "footer footer"
     "footer footer"
 }
-.superheader {
+.header {
     grid-area: header;
 }
 .content {
@@ -364,6 +363,10 @@ img{
         height: 20px;
         top: 10px;
         left: 10px;
+    }
+    .header__navbar-listt {
+        flex-direction: column;
+        text-align: center;
     }
   }
 
