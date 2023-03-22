@@ -10,8 +10,11 @@
 .header__navbar {
     display: flex;
     justify-content: space-between;
-    height: 60px;
-    padding-top: 8px;
+    background-color: #0f0f12;
+    opacity: 0.9;
+}
+.header__navbar-list {
+    padding: 8px 0;
 }
 .header__navbar-listt {
     list-style: none;
@@ -30,7 +33,7 @@
 }
 .header__navbar-item a {
     text-decoration: none;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 .header__navbar-list1 {
     list-style: none;
@@ -43,7 +46,7 @@
     width: 160px;
     height: 40px;
     padding-left: 0px;
-    margin: 2px 20px;
+    margin: 10px 20px;
 }    
 .header__navbar-list1 li .button{
     display: flex;
@@ -102,9 +105,8 @@
     display: grid;
     height: 100vh;    
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 60px 1fr 60px;
+    grid-template-rows: 1fr 60px;
     grid-template-areas:
-    "header header"
     "content1 content1"
     "footer footer"
     "footer footer"
@@ -354,7 +356,6 @@ img{
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        margin: 0;
     }
     .header__navbar-list1 li .button {
         display:none;
@@ -397,6 +398,15 @@ img{
         text-align: left;
     }    
 }
+nav .header__navbar-listt li a {
+    display: block;
+    padding: 8px 25px;
+    margin: 10px 0;
+}
+.button1, .icon1 {
+    list-style-type: none;
+}
+
 
 
 
