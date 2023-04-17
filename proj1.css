@@ -98,6 +98,7 @@
 .content {
     background-image: url(img/IMG\ Background.png);    
     height: 978px;
+    background-size: cover;
 }
 .item1 {
     font-size: 56px;
@@ -114,17 +115,17 @@
     text-align: left;
 
 }
-#body{
-    position: absolute;
-    width: 568px;
+#body {
+    position: relative;
+    width: 450px;
     height: 386px;
-    left: 256px;
-    top: 300px;
     display: flex;
     flex-direction: column;
     color: white;
-    margin-left: 0px;
     justify-content: space-between;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
 }
 #dong1{
     font-size: 45px;
@@ -290,6 +291,7 @@ img{
 @media screen and (max-width: 1600px) {   
     .xyz {
         justify-content: space-between;
+        display: flex;
     }
 }
 @media screen and (max-width: 1400px) {
@@ -298,8 +300,6 @@ img{
     }
     #body {
         position: relative;
-        left: 100px;
-        margin-left: auto;
     }
 }
 @media screen and (max-width: 1200px){
@@ -349,4 +349,11 @@ img{
     #body {
         width: 100%;
     }
+}
+.container-fluid {
+    padding: 0 !important;
+}
+.logo a {
+    display: flex;
+    align-items: center;
 }
