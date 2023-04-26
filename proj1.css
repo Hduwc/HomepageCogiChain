@@ -6,8 +6,6 @@
 .header__navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #0f0f12;
-    opacity: 0.9;
 }
 .logo {
     display: flex;
@@ -96,10 +94,12 @@
     cursor: pointer;
     padding: 10px;
 }
-.content {
-    background-image: url(img/IMG\ Background.png);    
-    height: 978px;
+.container-fluid1 {
+    background-image: url(img/IMG\ Background.png); 
     background-size: cover;
+}
+.content { 
+    height: 978px;
 }
 .item1 {
     font-size: 56px;
@@ -249,9 +249,6 @@ img{
 
 
 
-.footer {
-    background-color: #0D0D11;
-}
 .community__footer {
     list-style: none;
     padding-left: 0px;
@@ -375,10 +372,38 @@ img{
 .container-fluid {
     padding: 0 !important;
 }
+.header1 {
+    background-color: #0D0D11;
+}
+.footer1 {
+    background-color: #0D0D11;
+}
 @media screen and (min-width: 1920px){
     .content  {
         width: 1920px !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        background-image: none;
+    }
+    .header__navbar {
+        width: 1920px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .footer {
+        width: 1920px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;    
+    }
+    .container-fluid1 {
+        background-image: url(img/IMG\ Background.png); 
+        background-size: cover;
+        width: 100%;
+    }
+    .header1 {
+        width: 100%;
+    }
+    .footer1 {
+        width: 100%;
     }
 }
