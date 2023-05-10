@@ -325,6 +325,9 @@ img{
     .menu {
         display: none;
     }
+    .menu ul {
+        margin-top: 40px;
+    }
     .header__navbar-list1 {
         border: 1px solid #5142FC;
         border-radius: 50%;
