@@ -95,7 +95,7 @@
     padding: 10px;
 }
 .container-fluid1 {
-    background-image: url(img/IMG\ Background.png); 
+    background-image: url(/img/IMG\ Background.png); 
     background-size: cover;
 }
 .content { 
@@ -399,7 +399,7 @@ img{
         margin-right: auto !important;    
     }
     .container-fluid1 {
-        background-image: url(img/IMG\ Background.png); 
+        background-image: url(/img/IMG\ Background.png); 
         background-size: cover;
         width: 100%;
     }
