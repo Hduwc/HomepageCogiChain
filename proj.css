@@ -1,22 +1,17 @@
 * {
-    padding: 0px;
-    margin: 0px;
+    padding: 0 auto;
+    margin: 0  auto;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.header {
-    background-color: #0f0f12;
-    opacity: 0.9;
 }
 .header__navbar {
     display: flex;
     justify-content: space-between;
-    background-color: #0f0f12;
-    opacity: 0.9;
 }
-.header__navbar-list {
-    padding: 8px 0;
+.logo {
+    display: flex;
+    padding: 10px 0;
 }
-.header__navbar-listt {
+.menu ul {
     list-style: none;
     padding-left: 0px;
     margin: 0 auto;
@@ -26,6 +21,10 @@
     color: #E250E5; 
     transition: all 0.3s;
 }
+.menu {
+    display: flex;
+    justify-content: center;
+}
 .header__navbar-item {
     display: inline-block;
     justify-content: space-between;
@@ -33,7 +32,10 @@
 }
 .header__navbar-item a {
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 24px;
+}
+.walletconnect {
+    padding-top: 10px;
 }
 .header__navbar-list1 {
     list-style: none;
@@ -43,31 +45,15 @@
     border-radius: 20px;
     background-color: #0f0f12;
     display: flex;
-    width: 160px;
     height: 40px;
     padding-left: 0px;
     margin: 10px 20px;
+    width: 200px;
 }    
-.header__navbar-list1 li .button{
+.header__navbar-list1 div img{
     display: flex;
-    padding-right: 23px;
-    padding-top: 9px;
-}
-.header__navbar-list1 li img{
-    display: flex;
-    padding-top: 9px;
-    padding-left: 25px;    
-}
- 
-.header__navbar-link, .button {
-    font-size: 1rem;
-    display: inline-block;
-    color: #ffffff;
-    font-weight: 500;
-    line-height: 15px;
-    font-style: bold;
-    text-align: left;
-    text-decoration: none;
+    padding-top: 9px; 
+    margin-right: 0px;   
 }
 .header__navbar-list1:before {
     content: "";
@@ -82,48 +68,38 @@
     background: linear-gradient(216.56deg, #E250E5 5.32%, #4B50E6 94.32%);
     transition: all 0.3s
 }
-
+.icon1 {
+    margin: 0;
+    padding: 0px !important;
+}
+.button2 {
+    padding-left: 0px !important;
+}
+.header__navbar-link, .button {
+    font-size: 1rem;
+    display: inline-block;
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 15px;
+    font-style: bold;
+    text-align: left;
+    text-decoration: none;
+}
 .button {
     font-size: 1rem;
     text-align: center;
-    padding: auto;
-    display: inline-block;
     justify-content: center;
     position: absolute;
-    padding: 10px 32px;
-}
-.header__navbar-list1 .button {
-    font-size: 1rem;
-    display: flex;
-    padding: 10px;
-    justify-content: center;
+    margin: 0;
     cursor: pointer;
-    text-align: center;
-    margin-left: 40px;
+    padding: 10px;
 }
-.container {
-    display: grid;
-    height: 100vh;    
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 60px;
-    grid-template-areas:
-    "content1 content1"
-    "footer footer"
-    "footer footer"
+.container-fluid1 {
+    background-image: url(/img/IMG\ Background.png); 
+    background-size: cover;
 }
-.header {
-    grid-area: header;
-}
-.content {
-    grid-area: content1;
-    background-image: url(img/IMG\ Background.png);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-    "text1 picture"
-}
-.text1 {
-    grid-area: text1;
+.content { 
+    height: 978px;
 }
 .item1 {
     font-size: 56px;
@@ -140,52 +116,33 @@
     text-align: left;
 
 }
-.picture {
-    grid-area: picture;
-}
-.footer {
-    grid-area: footer;
-    background-color: #0D0D11;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
-    "community listsocial";
-}
-.community__footer {
-    grid-area: community;
-}
-.listsocial {
-    grid-area: listsocial;
-}
-#body{
+#body {
+    position: relative;
+    width: 450px;
+    height: 386px;
     display: flex;
     flex-direction: column;
     color: white;
-    margin-top: 60px;
-    margin-left: 0px;
     justify-content: space-between;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
 }
 #dong1{
     font-size: 45px;
-    margin-left: 100px;
+    margin: 0;
 }
 #dong2 {
-    margin-left: 100px;
+    margin: 0;
 }
 #dong2 p{
     font-size: 45px;
-    /* background: linear-gradient(to top right, #703794, #7852d1, #60bfdb); */
     -webkit-text-stroke: 1px rgb(36, 146, 190);
     -webkit-text-fill-color: transparent;
     margin-top: 10px;
 }
-/* @supports (-webkit-text-stroke: 5px rgb(76, 22, 163)) {
-     #dong2 p{
-        -webkit-text-stroke: blue;
-        -webkit-text-fill-color: white;
-    } */
 #dong3{
-    margin-left: 105px;
+    margin: 0;
 }
 #dong3 p{
     margin-top: 10px;
@@ -193,12 +150,10 @@
     font-weight: 600;
     line-height: 42px;
     letter-spacing: 0em;
-    /* text-align: left; */
-
 }
 #dong4 {
     
-    margin-left: 105px;
+    margin: 0;
     margin-top: 10px;
 }
 #dong4 p{
@@ -208,7 +163,7 @@
 #form_submit  {
     display: flex;
     list-style: none;
-    margin-left: 105px;
+    margin: 0;
     margin-top: 25px;
     cursor: pointer;
     max-width: 360px;
@@ -219,9 +174,9 @@
 
 }
 #submit .submit1{
-   
     width: 155px;
     list-style: none;
+    padding: 0;
 }
 #submit .submit1 .button1{
     padding: 15px;
@@ -242,29 +197,43 @@
     background: white 
 }
 #submit .submit1:hover #sign{
-    color: #4B50E6;
-    
+    color: #4B50E6;   
 }
 
+
+
+
+
+
+
+
 #wrapper{
-    display: grid;
-    grid-column-gap: 20px;
-    grid-template-columns: repeat(3, 0.5fr);
-    grid-auto-rows: minmax(160px, auto);
-    padding-top: 40px;
-    padding: 0px 40px;
     background-attachment: fixed;
+    width: 728px;
+    height: 978px;
+    margin: 0 auto;
+    position: relative;
+}
+.mask1 {
+    background: linear-gradient(180deg, #000A0F 0%, rgba(20, 20, 31, 0) 28.44%);
+    position: absolute;
+    height: 810px;
+    top: 0px;
+    opacity: 0.95;
+}
+.mask2 {
+    position: absolute;
+    height: 810px;
+    bottom: 0px;
+    background: linear-gradient(180deg, #040E23 1.8%, rgba(20, 20, 31, 0) 32.84%);
+    opacity: 0.95;
+    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 img{
-    max-width: 100%;
     height: auto;
     vertical-align: middle;
     display: inline-block;
     border-radius: 16px;
-}
-#wrapper  div{
-    justify-content: center;
-    align-items: center;
 }
 #wrapper  div  img{
     width: 100%;
@@ -275,6 +244,11 @@ img{
     display: grid;
     grid-row-gap: 20px;
 }
+
+
+
+
+
 .community__footer {
     list-style: none;
     padding-left: 0px;
@@ -308,13 +282,15 @@ img{
     padding-left: 0px;
     margin: 0 auto;
     display: flex;
-    padding: 8px 0;
     justify-content: center;
 }
 .social__footer a img {
     width: 40px;
     height: 40px;
-    padding: 0px 10px;
+    border-radius: 8px;
+}
+.social__footer a {
+    margin: 10px;
 }
 #toggle{
     display: none;
@@ -323,33 +299,34 @@ img{
     text-align: right;
     padding: 10px;
     font-size: 20px;
-    cursor: pointer;
-    margin-top: 3px;  
-  }
+    cursor: pointer;  
+}
 
-@media screen and (max-width: 940px){      
+@media screen and (max-width: 1600px) {   
+    .xyz {
+        justify-content: space-between;
+        display: flex;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .abc {
+        display: none;
+    }
+    #body {
+        position: relative;
+    }
+}
+@media screen and (max-width: 1200px){
     #toggle {
         display: block;
+        padding: 5px;
+        margin-right: 0;
     }
-    nav {
+    .menu {
         display: none;
     }
-    #wrapper {
-        display: none;
-    }
-    .footer {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-        "community"
-        "listsocial";
-    }
-    .content {
-        grid-template-columns: 1fr;
-        grid-template-areas: 
-        "text1";
-    }    
-    .text1 {
-        justify-content: space-between;
+    .menu ul {
+        margin-top: 40px;
     }
     .header__navbar-list1 {
         border: 1px solid #5142FC;
@@ -357,63 +334,79 @@ img{
         width: 40px;
         height: 40px;
     }
-    .header__navbar-list1 li .button {
-        display:none;
-    }
-    .header__navbar-list1 li a img {
-        padding-left: 10px;
-        padding-top: 10px;
-        width: 20px;
-        height: 20px;
-        top: 10px;
-        left: 10px;
+    .button2 {
+        display: none;
     }
     .header__navbar-listt {
         flex-direction: column;
         text-align: center;
     }
-  }
-
-@media screen and (max-width: 570px){
+    .walletconnect {
+        display: flex;
+        margin-right: 0;
+    }
+    .icon img {
+        margin: 0 9px;
+    }
+    .logo {
+        margin-left: 0;
+        padding: 10px 0;
+    }
+    .header__navbar-link {
+        margin: 20px;
+    }
+    #body {
+        left: auto;
+    }
+}
+@media screen and (max-width: 576px){
     #form_submit {
-        max-width: 100%;
-        justify-content: center;
-        margin-left: 0px;
-    }
-    #dong1, #dong2, #dong3, #dong4 {
-        margin-left: 20px;
-    }  
-    .item1 {
-        font-size: 32px;
-        font-weight: 500;
-        line-height: 40px;
-        letter-spacing: 0em;
-        text-align: left;
-    }
-    .item2 {
-        font-size: 32px;
-        font-weight: 700;
-        line-height: 40px;
-        letter-spacing: 0em;
-        text-align: left;
+        margin: auto;
     }    
+    #body {
+        width: 343px;
+        height: 260px;
+        top: 202px;
+    }
+    .content {
+        height: 720px;
+    }
 }
-nav .header__navbar-listt li a {
-    display: block;
-    padding: 8px 25px;
-    margin: 10px 0;
+.container-fluid {
+    padding: 0 !important;
 }
-.button1, .icon1 {
-    list-style-type: none;
+.header1 {
+    background-color: #0D0D11;
 }
-
-
-
-
-
-
-
-
-
-
-
+.footer1 {
+    background-color: #0D0D11;
+}
+@media screen and (min-width: 1920px){
+    .content  {
+        width: 1920px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        background-image: none;
+    }
+    .header__navbar {
+        width: 1920px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+    .footer {
+        width: 1920px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;    
+    }
+    .container-fluid1 {
+        background-image: url(/img/IMG\ Background.png); 
+        background-size: cover;
+        width: 100%;
+    }
+    .header1 {
+        width: 100%;
+    }
+    .footer1 {
+        width: 100%;
+    }
+}

@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/dist/css/splide-core.min.css">
     <link rel="stylesheet" href="/dist/css/splide.min.css">
     <script src="/dist/js/splide.min.js"></script>
+    <script src="/dist/js/splide.js"></script>
+    <script src="/dist/js/splide.as.js"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -88,38 +90,55 @@
                         <div class="mask1"></div>
                         <div class="mask2"></div>
                         <div class="col1 col-4 splide">
-                            <div class="pic1">
-                            <img src="img/1.png" alt="">
-                            </div>
-                            <div class="pic2">
-                                <img  src="img/2.png" alt="">
-                            </div>
-                            
-                            <div class="pic3">
-                                <img src="img/3.png" alt="">
+                            <div class="splide__slider">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="pic1 splide__slide">
+                                            <img src="img/1.png" alt="">
+                                        </li>
+                                        <li class="pic2 splide__slide">
+                                            <img  src="img/2.png" alt="">
+                                        </li>
+                                        <li class="pic3 splide__slide">
+                                            <img src="img/3.png" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                        <div class="col2 col-4 splide1">    
-                            <div class="pic4">
-                                <img src="img/4.png" alt="">
-                            </div>
-                            <div class="pic5">
-                                <img src="img/5.png" alt="">
-                            </div>
-                            <div class="pic6">
-                                <img src="img/6.png" alt="">
-                            </div>
+                        <div class="col2 col-4 splide splide1">  
+                            <div class="splide__slider">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="pic4 splide__slide">
+                                            <img src="img/4.png" alt="">
+                                        </li>
+                                        <li class="pic5 splide__slide">
+                                            <img  src="img/5.png" alt="">
+                                        </li>
+                                        <li class="pic6 splide__slide">
+                                            <img src="img/6.png" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>  
                         </div> 
-                        <div class="col3 col-4 splide2">  
-                            <div class="pic7">
-                                <img src="img/7.png" alt="">
-                            </div>
-                            <div class="pic8">
-                                <img src="img/8.png" alt="">
-                            </div>
-                            <div class="pic9">
-                                <img src="img/9.png" alt="">
-                            </div>
+                        <div class="col3 col-4 splide splide2">  
+                            <div class="splide__slider">
+                                <div class="splide__track">
+                                    <ul class="splide__list">
+                                        <li class="pic7 splide__slide">
+                                            <img src="img/7.png" alt="">
+                                        </li>
+                                        <li class="pic8 splide__slide">
+                                            <img  src="img/8.png" alt="">
+                                        </li>
+                                        <li class="pic9 splide__slide">
+                                            <img src="img/9.png" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>    
                         </div>  
                     </div>             
                 </div>       
@@ -147,7 +166,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        g.tab(".tab-li", ".li-containt", false);
+        // g.tab(".tab-li", ".li-containt", false);
 
         new Splide('.splide', {
             perPage: 3,            
@@ -161,7 +180,7 @@
             drag: 'free',
             focus: 'center',
             padding: '15px',
-        }).mount(window.splide.Extensions);
+        }).mount();
 
 
         new Splide('.splide1', {
@@ -176,9 +195,9 @@
                 speed: 2,
             },
             padding: '15px',
-        }).mount(window.splide.Extensions);
+        }).mount();
 
-        var splide2 = new Splide('.splide2', {
+        new Splide('.splide2', {
             perPage: 3,
             rewind: true,
             direction: 'ttb',
@@ -187,11 +206,10 @@
             drag: 'free',
             focus: 'center',
             autoScroll: {
-                speed: 1,
+                speed: 2,
             },
             padding: '15px',
-        });
-        splide2.mount(window.splide.Extensions);
+        }).mount();
 
     </script>
 </body>

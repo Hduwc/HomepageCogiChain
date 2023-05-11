@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <head>
     <title>CogiChain - Website</title>
-    <link rel="stylesheet" href="proj.css">
-    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="/dist/css/proj1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function (){
             $('#toggle').click(function(){
-                $('nav').slideToggle();
+                $('.menu').slideToggle();
             });
         })
     </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/dist/css/splide-core.min.css">
+    <link rel="stylesheet" href="/dist/css/splide.min.css">
+    <script src="/dist/js/splide.min.js"></script>
 </head>
 <body>
-    <div class="header">
-        <div class="header__navbar">
-            <div class="header__navbar-list">
-                <a onclick="openNav()"><img src="img/COGI-Logo 2.png" alt="logo"></a>
+    <div class="container-fluid">
+        <div class="header1">
+            <div class="row header__navbar">
+                <div class="col-3 logo">
+                    <a onclick="openNav()"><img src="img/COGI-Logo 2.png" alt="logo"></a>
+                </div>
+                <div class="col-6 menu">
+                    <ul class="header__navbar-listt">
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:1;">Home</a></li>
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:2;">Games</a></li>
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:3;">My Wallet</a></li>
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:4;">Inventory</a></li>
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:5;">Marketplace</a></li>
+                        <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:6;">Dashboard</a></li> 
+                    </ul>   
+                </div>
+                <div class="col-3 walletconnect">
+                    <div class="header__navbar-list1 row">  
+                        <div class="icon1 col-xl-3"><a href="" class="icon"><img src="./img/Icon Wallet.png" alt=""></a></div>
+                        <div class="button2 col-xl-9"><a href="" class="button">Wallet connect</a></div>
+                    </div>
+                    <div class="icon" id="toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
             </div>
-            <nav>
-                <ul class="header__navbar-listt">
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:1;">Home</a></li>
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:2;">Games</a></li>
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:3;">My Wallet</a></li>
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:4;">Inventory</a></li>
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:5;">Marketplace</a></li>
-                    <li class="header__navbar-item"><a href="" class="header__navbar-link" style="--i:6;">Dashboard</a></li> 
-                </ul>
-            </nav>
-            <ul class="header__navbar-list1">  
-                <li><a href="" class="button">Wallet connect</a></li>
-                <li><a href="" class="icon"><img src="./img/Icon Wallet.png" alt=""></a></li>
-            </ul>
-            <div class="icon" id="toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </div>
-    <div class ="container">
-            <div class="content">
-                <div class="text1">
+        </div>    
+        <div class="container-fluid1">
+            <div class="row content">
+                <div class="col-xl-6 xyz">
                     <div id="body">
                         <div id="dong1">
                             <p style="color: white;" class="item1">Unrivaled</p>
@@ -73,57 +81,128 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="picture" id="wrapper">
-                    <div class="col1">
-                        <div class="pic1">
-                        <img src="img/1.png" alt="">
+                    
+                </div>       
+                <div class="col-xl-6 abc">
+                    <div class="picture row" id="wrapper">
+                        <div class="mask1"></div>
+                        <div class="mask2"></div>
+                        <div class="col1 col-4 splide">
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="pic1">
+                                    <img src="img/1.png" alt="">
+                                    </li>
+                                    <li class="pic2">
+                                        <img  src="img/2.png" alt="">
+                                    </li>
+                                    <li class="pic3">
+                                        <img src="img/3.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="pic2">
-                            <img  src="img/2.png" alt="">
-                        </div>
-                        
-                        <div class="pic3">
-                            <img src="img/3.png" alt="">
-                        </div>
-                    </div>
-                    <div class="col2">    
-                        <div class="pic4">
-                            <img src="img/4.png" alt="">
-                        </div>
-                        <div class="pic5">
-                            <img src="img/5.png" alt="">
-                        </div>
-                        <div class="pic6">
-                            <img src="img/6.png" alt="">
-                        </div>
-                    </div> 
-                    <div class="col3">  
-                        <div class="pic7">
-                            <img src="img/7.png" alt="">
-                        </div>
-                        <div class="pic8">
-                            <img src="img/8.png" alt="">
-                        </div>
-                        <div class="pic9">
-                            <img src="img/9.png" alt="">
-                        </div>
-                    </div>    
-                </div>
-            </div>
-        <div class="footer">
-            <ul class="community__footer">
-                <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:1;">About Us</a></li>
-                <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:2;">Contact Us</a></li>
-                <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:3;">Term Of Service</a></li>
-                <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:4;">Privacy Policy</a></li>
-            </ul> 
-            <div class="social__footer">
-                <a href="https://twitter.com/"><img src="./img/twittericon.png" alt=""></a>
-                <a href="https://www.facebook.com/"><img src="./img/facebookicon.png" alt=""></a>
-                <a href="https://web.telegram.org/"><img src="./img/teleicon.png" alt=""></a>
-                <a href="https://discord.com/"><img src="./img/discordicon.png" alt=""></a>
+                        <div class="col2 col-4 splide1">    
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="pic4">
+                                    <img src="img/4.png" alt="">
+                                    </li>
+                                    <li class="pic5">
+                                        <img  src="img/5.png" alt="">
+                                    </li>
+                                    <li class="pic6">
+                                        <img src="img/6.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> 
+                        <div class="col3 col-4 splide2">  
+                            <div class="splide__track">
+                                <ul class="splide__list">
+                                    <li class="pic7">
+                                    <img src="img/7.png" alt="">
+                                    </li>
+                                    <li class="pic8">
+                                        <img  src="img/8.png" alt="">
+                                    </li>
+                                    <li class="pic9">
+                                        <img src="img/9.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>  
+                    </div>             
+                </div>       
             </div>
         </div>
-    </div>    
+        <div class="footer1">    
+            <div class="row footer">
+                <div class="col-xl-6 col-12">
+                    <ul class="community__footer">
+                        <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:1;">About Us</a></li>
+                        <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:2;">Contact Us</a></li>
+                        <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:3;">Term Of Service</a></li>
+                        <li class="community__footer-item"><a href="" class="community__footer-link" style="--i:4;">Privacy Policy</a></li>
+                    </ul>     
+                </div>
+                <div class="col-xl-6 col-12">
+                    <div class="social__footer">
+                        <a href="https://twitter.com/"><img src="./img/twittericon.png" alt=""></a>
+                        <a href="https://www.facebook.com/"><img src="./img/facebookicon.png" alt=""></a>
+                        <a href="https://web.telegram.org/"><img src="./img/teleicon.png" alt=""></a>
+                        <a href="https://discord.com/"><img src="./img/discordicon.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // g.tab(".tab-li", ".li-containt", false);
+
+        new Splide('.splide', {
+            perPage: 3,            
+            rewind: true,
+            direction: 'ttb',
+            height: '900px',
+            type: 'loop',
+            autoScroll: {
+                speed: 1,
+            },
+            drag: 'free',
+            focus: 'center',
+            padding: '15px',
+        }).mount();
+
+
+        new Splide('.splide1', {
+            perPage: 3,
+            rewind: true,
+            direction: 'ttb',
+            height: '900px',
+            type: 'loop',
+            drag: 'free',
+            focus: 'center',
+            autoScroll: {
+                speed: 2,
+            },
+            padding: '15px',
+        }).mount();
+
+        var splide2 = new Splide('.splide2', {
+            perPage: 3,
+            rewind: true,
+            direction: 'ttb',
+            height: '900px',
+            type: 'loop',
+            drag: 'free',
+            focus: 'center',
+            autoScroll: {
+                speed: 1,
+            },
+            padding: '15px',
+        });
+        splide2.mount();
+
+    </script>
 </body>
