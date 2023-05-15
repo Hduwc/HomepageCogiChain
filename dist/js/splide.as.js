@@ -1,599 +1,394 @@
 /*!
  * @splidejs/splide-extension-auto-scroll
- * Version  : 0.5.2
+ * Version  : 0.5.3
  * License  : MIT
  * Copyright: 2022 Naotoshi Fujita
  */
-(function (factory) {
-    typeof define === 'function' && define.amd ? define(factory) : factory();
-  })(function () {
-    'use strict';
-  
-    function empty(array) {
-      array.length = 0;
-    }
-  
-    function slice$1(arrayLike, start, end) {
-      return Array.prototype.slice.call(arrayLike, start, end);
-    }
-  
-    function apply$1(func) {
-      return func.bind.apply(func, [null].concat(slice$1(arguments, 1)));
-    }
-  
-    function raf(func) {
-      return requestAnimationFrame(func);
-    }
-  
-    function typeOf$1(type, subject) {
-      return typeof subject === type;
-    }
-  
-    var isArray$1 = Array.isArray;
-    apply$1(typeOf$1, "function");
-    apply$1(typeOf$1, "string");
-    apply$1(typeOf$1, "undefined");
-  
-    function toArray$1(value) {
-      return isArray$1(value) ? value : [value];
-    }
-  
-    function forEach$1(values, iteratee) {
-      toArray$1(values).forEach(iteratee);
-    }
-  
-    var ownKeys$1 = Object.keys;
-  
-    function forOwn$1(object, iteratee, right) {
-      if (object) {
-        var keys = ownKeys$1(object);
-        keys = right ? keys.reverse() : keys;
-  
-        for (var i = 0; i < keys.length; i++) {
-          var key = keys[i];
-  
-          if (key !== "__proto__") {
-            if (iteratee(object[key], key) === false) {
-              break;
-            }
+(function(S) {
+  typeof define == "function" && define.amd ? define(S) : S()
+}
+)(function() {
+  "use strict";
+  function S(n) {
+      n.length = 0
+  }
+  function D(n, t, r) {
+      return Array.prototype.slice.call(n, t, r)
+  }
+  function _(n) {
+      return n.bind.apply(n, [null].concat(D(arguments, 1)))
+  }
+  function q(n) {
+      return requestAnimationFrame(n)
+  }
+  function C(n, t) {
+      return typeof t === n
+  }
+  var z = Array.isArray;
+  _(C, "function"),
+  _(C, "string"),
+  _(C, "undefined");
+  function B(n) {
+      return z(n) ? n : [n]
+  }
+  function H(n, t) {
+      B(n).forEach(t)
+  }
+  var cn = Object.keys;
+  function sn(n, t, r) {
+      if (n) {
+          var e = cn(n);
+          e = r ? e.reverse() : e;
+          for (var o = 0; o < e.length; o++) {
+              var c = e[o];
+              if (c !== "__proto__" && t(n[c], c) === !1)
+                  break
           }
-        }
       }
-  
-      return object;
-    }
-  
-    function assign$1(object) {
-      slice$1(arguments, 1).forEach(function (source) {
-        forOwn$1(source, function (value, key) {
-          object[key] = source[key];
-        });
-      });
-      return object;
-    }
-  
-    var min$1 = Math.min;
-  
-    function EventBinder() {
-      var listeners = [];
-  
-      function bind(targets, events, callback, options) {
-        forEachEvent(targets, events, function (target, event, namespace) {
-          var isEventTarget = ("addEventListener" in target);
-          var remover = isEventTarget ? target.removeEventListener.bind(target, event, callback, options) : target["removeListener"].bind(target, callback);
-          isEventTarget ? target.addEventListener(event, callback, options) : target["addListener"](callback);
-          listeners.push([target, event, namespace, callback, remover]);
-        });
+      return n
+  }
+  function dn(n) {
+      return D(arguments, 1).forEach(function(t) {
+          sn(t, function(r, e) {
+              n[e] = t[e]
+          })
+      }),
+      n
+  }
+  var ln = Math.min;
+  function vn() {
+      var n = [];
+      function t(u, s, a, d) {
+          o(u, s, function(f, v, l) {
+              var h = "addEventListener"in f
+                , w = h ? f.removeEventListener.bind(f, v, a, d) : f.removeListener.bind(f, a);
+              h ? f.addEventListener(v, a, d) : f.addListener(a),
+              n.push([f, v, l, a, w])
+          })
       }
-  
-      function unbind(targets, events, callback) {
-        forEachEvent(targets, events, function (target, event, namespace) {
-          listeners = listeners.filter(function (listener) {
-            if (listener[0] === target && listener[1] === event && listener[2] === namespace && (!callback || listener[3] === callback)) {
-              listener[4]();
-              return false;
-            }
-  
-            return true;
-          });
-        });
+      function r(u, s, a) {
+          o(u, s, function(d, f, v) {
+              n = n.filter(function(l) {
+                  return l[0] === d && l[1] === f && l[2] === v && (!a || l[3] === a) ? (l[4](),
+                  !1) : !0
+              })
+          })
       }
-  
-      function dispatch(target, type, detail) {
-        var e;
-        var bubbles = true;
-  
-        if (typeof CustomEvent === "function") {
-          e = new CustomEvent(type, {
-            bubbles: bubbles,
-            detail: detail
-          });
-        } else {
-          e = document.createEvent("CustomEvent");
-          e.initCustomEvent(type, bubbles, false, detail);
-        }
-  
-        target.dispatchEvent(e);
-        return e;
+      function e(u, s, a) {
+          var d, f = !0;
+          return typeof CustomEvent == "function" ? d = new CustomEvent(s,{
+              bubbles: f,
+              detail: a
+          }) : (d = document.createEvent("CustomEvent"),
+          d.initCustomEvent(s, f, !1, a)),
+          u.dispatchEvent(d),
+          d
       }
-  
-      function forEachEvent(targets, events, iteratee) {
-        forEach$1(targets, function (target) {
-          target && forEach$1(events, function (events2) {
-            events2.split(" ").forEach(function (eventNS) {
-              var fragment = eventNS.split(".");
-              iteratee(target, fragment[0], fragment[1]);
-            });
-          });
-        });
+      function o(u, s, a) {
+          H(u, function(d) {
+              d && H(s, function(f) {
+                  f.split(" ").forEach(function(v) {
+                      var l = v.split(".");
+                      a(d, l[0], l[1])
+                  })
+              })
+          })
       }
-  
-      function destroy() {
-        listeners.forEach(function (data) {
-          data[4]();
-        });
-        empty(listeners);
+      function c() {
+          n.forEach(function(u) {
+              u[4]()
+          }),
+          S(n)
       }
-  
       return {
-        bind: bind,
-        unbind: unbind,
-        dispatch: dispatch,
-        destroy: destroy
-      };
-    }
-  
-    var EVENT_MOVE = "move";
-    var EVENT_MOVED = "moved";
-    var EVENT_UPDATED = "updated";
-    var EVENT_DRAG = "drag";
-    var EVENT_DRAGGED = "dragged";
-    var EVENT_SCROLL = "scroll";
-    var EVENT_SCROLLED = "scrolled";
-    var EVENT_DESTROY = "destroy";
-  
-    function EventInterface(Splide2) {
-      var bus = Splide2 ? Splide2.event.bus : document.createDocumentFragment();
-      var binder = EventBinder();
-  
-      function on(events, callback) {
-        binder.bind(bus, toArray$1(events).join(" "), function (e) {
-          callback.apply(callback, isArray$1(e.detail) ? e.detail : []);
-        });
+          bind: t,
+          unbind: r,
+          dispatch: e,
+          destroy: c
       }
-  
-      function emit(event) {
-        binder.dispatch(bus, event, slice$1(arguments, 1));
+  }
+  var K = "move"
+    , J = "moved"
+    , En = "updated"
+    , Q = "drag"
+    , pn = "dragged"
+    , U = "scroll"
+    , W = "scrolled"
+    , mn = "destroy";
+  function hn(n) {
+      var t = n ? n.event.bus : document.createDocumentFragment()
+        , r = vn();
+      function e(c, u) {
+          r.bind(t, B(c).join(" "), function(s) {
+              u.apply(u, z(s.detail) ? s.detail : [])
+          })
       }
-  
-      if (Splide2) {
-        Splide2.event.on(EVENT_DESTROY, binder.destroy);
+      function o(c) {
+          r.dispatch(t, c, D(arguments, 1))
       }
-  
-      return assign$1(binder, {
-        bus: bus,
-        on: on,
-        off: apply$1(binder.unbind, bus),
-        emit: emit
-      });
-    }
-  
-    function RequestInterval(interval, onInterval, onUpdate, limit) {
-      var now = Date.now;
-      var startTime;
-      var rate = 0;
-      var id;
-      var paused = true;
-      var count = 0;
-  
-      function update() {
-        if (!paused) {
-          rate = interval ? min$1((now() - startTime) / interval, 1) : 1;
-          onUpdate && onUpdate(rate);
-  
-          if (rate >= 1) {
-            onInterval();
-            startTime = now();
-  
-            if (limit && ++count >= limit) {
-              return pause();
-            }
+      return n && n.event.on(mn, r.destroy),
+      dn(r, {
+          bus: t,
+          on: e,
+          off: _(r.unbind, t),
+          emit: o
+      })
+  }
+  function Y(n, t, r, e) {
+      var o = Date.now, c, u = 0, s, a = !0, d = 0;
+      function f() {
+          if (!a) {
+              if (u = n ? ln((o() - c) / n, 1) : 1,
+              r && r(u),
+              u >= 1 && (t(),
+              c = o(),
+              e && ++d >= e))
+                  return l();
+              q(f)
           }
-  
-          raf(update);
-        }
       }
-  
-      function start(resume) {
-        !resume && cancel();
-        startTime = now() - (resume ? rate * interval : 0);
-        paused = false;
-        raf(update);
+      function v(E) {
+          !E && w(),
+          c = o() - (E ? u * n : 0),
+          a = !1,
+          q(f)
       }
-  
-      function pause() {
-        paused = true;
+      function l() {
+          a = !0
       }
-  
-      function rewind() {
-        startTime = now();
-        rate = 0;
-  
-        if (onUpdate) {
-          onUpdate(rate);
-        }
+      function h() {
+          c = o(),
+          u = 0,
+          r && r(u)
       }
-  
-      function cancel() {
-        id && cancelAnimationFrame(id);
-        rate = 0;
-        id = 0;
-        paused = true;
+      function w() {
+          s && cancelAnimationFrame(s),
+          u = 0,
+          s = 0,
+          a = !0
       }
-  
-      function set(time) {
-        interval = time;
+      function M(E) {
+          n = E
       }
-  
-      function isPaused() {
-        return paused;
+      function N() {
+          return a
       }
-  
       return {
-        start: start,
-        rewind: rewind,
-        pause: pause,
-        cancel: cancel,
-        set: set,
-        isPaused: isPaused
-      };
-    }
-  
-    function Throttle(func, duration) {
-      var interval;
-  
-      function throttled() {
-        if (!interval) {
-          interval = RequestInterval(duration || 0, function () {
-            func();
-            interval = null;
-          }, null, 1);
-          interval.start();
-        }
+          start: v,
+          rewind: h,
+          pause: l,
+          cancel: w,
+          set: M,
+          isPaused: N
       }
-  
-      return throttled;
-    }
-  
-    var CLASS_ACTIVE = "is-active";
-    var SLIDE = "slide";
-    var FADE = "fade";
-  
-    function slice(arrayLike, start, end) {
-      return Array.prototype.slice.call(arrayLike, start, end);
-    }
-  
-    function apply(func) {
-      return func.bind.apply(func, [null].concat(slice(arguments, 1)));
-    }
-  
-    function typeOf(type, subject) {
-      return typeof subject === type;
-    }
-  
-    function isObject(subject) {
-      return !isNull(subject) && typeOf("object", subject);
-    }
-  
-    var isArray = Array.isArray;
-    apply(typeOf, "function");
-    apply(typeOf, "string");
-    var isUndefined = apply(typeOf, "undefined");
-  
-    function isNull(subject) {
-      return subject === null;
-    }
-  
-    function toArray(value) {
-      return isArray(value) ? value : [value];
-    }
-  
-    function forEach(values, iteratee) {
-      toArray(values).forEach(iteratee);
-    }
-  
-    function toggleClass(elm, classes, add) {
-      if (elm) {
-        forEach(classes, function (name) {
-          if (name) {
-            elm.classList[add ? "add" : "remove"](name);
+  }
+  function An(n, t) {
+      var r;
+      function e() {
+          r || (r = Y(t || 0, function() {
+              n(),
+              r = null
+          }, null, 1),
+          r.start())
+      }
+      return e
+  }
+  var gn = "is-active"
+    , wn = "slide"
+    , yn = "fade";
+  function X(n, t, r) {
+      return Array.prototype.slice.call(n, t, r)
+  }
+  function V(n) {
+      return n.bind.apply(n, [null].concat(X(arguments, 1)))
+  }
+  function L(n, t) {
+      return typeof t === n
+  }
+  function $(n) {
+      return !Z(n) && L("object", n)
+  }
+  var bn = Array.isArray;
+  V(L, "function"),
+  V(L, "string");
+  var Sn = V(L, "undefined");
+  function Z(n) {
+      return n === null
+  }
+  function _n(n) {
+      return bn(n) ? n : [n]
+  }
+  function O(n, t) {
+      _n(n).forEach(t)
+  }
+  function Ln(n, t, r) {
+      n && O(t, function(e) {
+          e && n.classList[r ? "add" : "remove"](e)
+      })
+  }
+  var On = Object.keys;
+  function j(n, t, r) {
+      if (n) {
+          var e = On(n);
+          e = r ? e.reverse() : e;
+          for (var o = 0; o < e.length; o++) {
+              var c = e[o];
+              if (c !== "__proto__" && t(n[c], c) === !1)
+                  break
           }
-        });
       }
-    }
-  
-    var ownKeys = Object.keys;
-  
-    function forOwn(object, iteratee, right) {
-      if (object) {
-        var keys = ownKeys(object);
-        keys = right ? keys.reverse() : keys;
-  
-        for (var i = 0; i < keys.length; i++) {
-          var key = keys[i];
-  
-          if (key !== "__proto__") {
-            if (iteratee(object[key], key) === false) {
-              break;
-            }
-          }
-        }
-      }
-  
-      return object;
-    }
-  
-    function assign(object) {
-      slice(arguments, 1).forEach(function (source) {
-        forOwn(source, function (value, key) {
-          object[key] = source[key];
-        });
-      });
-      return object;
-    }
-  
-    function removeAttribute(elms, attrs) {
-      forEach(elms, function (elm) {
-        forEach(attrs, function (attr) {
-          elm && elm.removeAttribute(attr);
-        });
-      });
-    }
-  
-    function setAttribute(elms, attrs, value) {
-      if (isObject(attrs)) {
-        forOwn(attrs, function (value2, name) {
-          setAttribute(elms, name, value2);
-        });
-      } else {
-        forEach(elms, function (elm) {
-          isNull(value) || value === "" ? removeAttribute(elm, attrs) : elm.setAttribute(attrs, String(value));
-        });
-      }
-    }
-  
-    var min = Math.min,
-        max = Math.max,
-        floor = Math.floor,
-        ceil = Math.ceil,
-        abs = Math.abs;
-  
-    function clamp(number, x, y) {
-      var minimum = min(x, y);
-      var maximum = max(x, y);
-      return min(max(minimum, number), maximum);
-    }
-  
-    var DEFAULTS = {
+      return n
+  }
+  function k(n) {
+      return X(arguments, 1).forEach(function(t) {
+          j(t, function(r, e) {
+              n[e] = t[e]
+          })
+      }),
+      n
+  }
+  function Tn(n, t) {
+      O(n, function(r) {
+          O(t, function(e) {
+              r && r.removeAttribute(e)
+          })
+      })
+  }
+  function nn(n, t, r) {
+      $(t) ? j(t, function(e, o) {
+          nn(n, o, e)
+      }) : O(n, function(e) {
+          Z(r) || r === "" ? Tn(e, t) : e.setAttribute(t, String(r))
+      })
+  }
+  var tn = Math.min
+    , rn = Math.max
+    , qn = Math.floor
+    , zn = Math.ceil
+    , Bn = Math.abs;
+  function Dn(n, t, r) {
+      var e = tn(t, r)
+        , o = rn(t, r);
+      return tn(rn(e, n), o)
+  }
+  var Cn = {
       speed: 1,
-      autoStart: true,
-      pauseOnHover: true,
-      pauseOnFocus: true
-    };
-    var I18N = {
+      autoStart: !0,
+      pauseOnHover: !0,
+      pauseOnFocus: !0
+  }
+    , Vn = {
       startScroll: "Start auto scroll",
       pauseScroll: "Pause auto scroll"
-    };
-  
-    function AutoScroll(Splide2, Components2, options) {
-      var _EventInterface = EventInterface(Splide2),
-          on = _EventInterface.on,
-          off = _EventInterface.off,
-          bind = _EventInterface.bind,
-          unbind = _EventInterface.unbind;
-  
-      var _Components2$Move = Components2.Move,
-          translate = _Components2$Move.translate,
-          getPosition = _Components2$Move.getPosition,
-          toIndex = _Components2$Move.toIndex,
-          getLimit = _Components2$Move.getLimit;
-      var _Components2$Controll = Components2.Controller,
-          setIndex = _Components2$Controll.setIndex,
-          getIndex = _Components2$Controll.getIndex;
-      var orient = Components2.Direction.orient;
-      var toggle = Components2.Elements.toggle;
-      var Live = Components2.Live;
-      var root = Splide2.root;
-      var throttledUpdateArrows = Throttle(Components2.Arrows.update, 500);
-      var autoScrollOptions = {};
-      var interval;
-      var stopped;
-      var hovered;
-      var focused;
-      var busy;
-      var currPosition;
-  
-      function setup() {
-        var autoScroll = options.autoScroll;
-        autoScrollOptions = assign({}, DEFAULTS, isObject(autoScroll) ? autoScroll : {});
+  };
+  function $n(n, t, r) {
+      var e = hn(n), o = e.on, c = e.off, u = e.bind, s = e.unbind, a = t.Move, d = a.translate, f = a.getPosition, v = a.toIndex, l = a.getLimit, h = t.Controller, w = h.setIndex, M = h.getIndex, N = t.Direction.orient, E = t.Elements.toggle, en = t.Live, I = n.root, Mn = An(t.Arrows.update, 500), p = {}, m, A, x, F, P, T;
+      function Nn() {
+          var i = r.autoScroll;
+          p = k({}, Cn, $(i) ? i : {})
       }
-  
-      function mount() {
-        if (!Splide2.is(FADE)) {
-          if (!interval && options.autoScroll !== false) {
-            interval = RequestInterval(0, move);
-            listen();
-            autoStart();
+      function on() {
+          n.is(yn) || !m && r.autoScroll !== !1 && (m = Y(0, Pn),
+          In(),
+          Fn())
+      }
+      function un() {
+          m && (m.cancel(),
+          m = null,
+          T = void 0,
+          c([K, Q, U, J, W]),
+          s(I, "mouseenter mouseleave focusin focusout"),
+          s(E, "click"))
+      }
+      function In() {
+          p.pauseOnHover && u(I, "mouseenter mouseleave", function(i) {
+              x = i.type === "mouseenter",
+              R()
+          }),
+          p.pauseOnFocus && u(I, "focusin focusout", function(i) {
+              F = i.type === "focusin",
+              R()
+          }),
+          p.useToggleButton && u(E, "click", function() {
+              A ? y() : b()
+          }),
+          o(En, xn),
+          o([K, Q, U], function() {
+              P = !0,
+              b(!1)
+          }),
+          o([J, pn, W], function() {
+              P = !1,
+              R()
+          })
+      }
+      function xn() {
+          var i = r.autoScroll;
+          i !== !1 ? (p = k({}, p, $(i) ? i : {}),
+          on()) : un(),
+          m && !Sn(T) && d(T)
+      }
+      function Fn() {
+          p.autoStart && (document.readyState === "complete" ? y() : u(window, "load", y))
+      }
+      function y() {
+          G() && (m.start(!0),
+          en.disable(!0),
+          F = x = A = !1,
+          an())
+      }
+      function b(i) {
+          i === void 0 && (i = !0),
+          A || (A = i,
+          an(),
+          G() || (m.pause(),
+          en.disable(!1)))
+      }
+      function R() {
+          A || (x || F || P ? b(!1) : y())
+      }
+      function Pn() {
+          var i = f()
+            , g = Rn(i);
+          i !== g ? (d(g),
+          Gn(T = f())) : (b(!1),
+          p.rewind && n.go(p.speed > 0 ? 0 : t.Controller.getEnd())),
+          Mn()
+      }
+      function Rn(i) {
+          var g = p.speed || 1;
+          return i += N(g),
+          n.is(wn) && (i = Dn(i, l(!1), l(!0))),
+          i
+      }
+      function Gn(i) {
+          var g = n.length
+            , fn = (v(i) + g) % g;
+          fn !== M() && (w(fn),
+          t.Slides.update(),
+          t.Pagination.update(),
+          r.lazyLoad === "nearby" && t.LazyLoad.check())
+      }
+      function an() {
+          if (E) {
+              var i = A ? "startScroll" : "pauseScroll";
+              Ln(E, gn, !A),
+              nn(E, "aria-label", r.i18n[i] || Vn[i])
           }
-        }
       }
-  
-      function destroy() {
-        if (interval) {
-          interval.cancel();
-          interval = null;
-          currPosition = void 0;
-          off([EVENT_MOVE, EVENT_DRAG, EVENT_SCROLL, EVENT_MOVED, EVENT_SCROLLED]);
-          unbind(root, "mouseenter mouseleave focusin focusout");
-          unbind(toggle, "click");
-        }
+      function G() {
+          return !m || m.isPaused()
       }
-  
-      function listen() {
-        if (autoScrollOptions.pauseOnHover) {
-          bind(root, "mouseenter mouseleave", function (e) {
-            hovered = e.type === "mouseenter";
-            autoToggle();
-          });
-        }
-  
-        if (autoScrollOptions.pauseOnFocus) {
-          bind(root, "focusin focusout", function (e) {
-            focused = e.type === "focusin";
-            autoToggle();
-          });
-        }
-  
-        if (autoScrollOptions.useToggleButton) {
-          bind(toggle, "click", function () {
-            stopped ? play() : pause();
-          });
-        }
-  
-        on(EVENT_UPDATED, update);
-        on([EVENT_MOVE, EVENT_DRAG, EVENT_SCROLL], function () {
-          busy = true;
-          pause(false);
-        });
-        on([EVENT_MOVED, EVENT_DRAGGED, EVENT_SCROLLED], function () {
-          busy = false;
-          autoToggle();
-        });
-      }
-  
-      function update() {
-        var autoScroll = options.autoScroll;
-  
-        if (autoScroll !== false) {
-          autoScrollOptions = assign({}, autoScrollOptions, isObject(autoScroll) ? autoScroll : {});
-          mount();
-        } else {
-          destroy();
-        }
-  
-        if (interval && !isUndefined(currPosition)) {
-          translate(currPosition);
-        }
-      }
-  
-      function autoStart() {
-        if (autoScrollOptions.autoStart) {
-          if (document.readyState === "complete") {
-            play();
-          } else {
-            bind(window, "load", play);
-          }
-        }
-      }
-  
-      function play() {
-        if (isPaused()) {
-          interval.start(true);
-          Live.disable(true);
-          focused = hovered = stopped = false;
-          updateButton();
-        }
-      }
-  
-      function pause(stop) {
-        if (stop === void 0) {
-          stop = true;
-        }
-  
-        if (!stopped) {
-          stopped = stop;
-          updateButton();
-  
-          if (!isPaused()) {
-            interval.pause();
-            Live.disable(false);
-          }
-        }
-      }
-  
-      function autoToggle() {
-        if (!stopped) {
-          hovered || focused || busy ? pause(false) : play();
-        }
-      }
-  
-      function move() {
-        var position = getPosition();
-        var destination = computeDestination(position);
-  
-        if (position !== destination) {
-          translate(destination);
-          updateIndex(currPosition = getPosition());
-        } else {
-          pause(false);
-  
-          if (autoScrollOptions.rewind) {
-            Splide2.go(autoScrollOptions.speed > 0 ? 0 : Components2.Controller.getEnd());
-          }
-        }
-  
-        throttledUpdateArrows();
-      }
-  
-      function computeDestination(position) {
-        var speed = autoScrollOptions.speed || 1;
-        position += orient(speed);
-  
-        if (Splide2.is(SLIDE)) {
-          position = clamp(position, getLimit(false), getLimit(true));
-        }
-  
-        return position;
-      }
-  
-      function updateIndex(position) {
-        var length = Splide2.length;
-        var index = (toIndex(position) + length) % length;
-  
-        if (index !== getIndex()) {
-          setIndex(index);
-          Components2.Slides.update();
-          Components2.Pagination.update();
-          options.lazyLoad === "nearby" && Components2.LazyLoad.check();
-        }
-      }
-  
-      function updateButton() {
-        if (toggle) {
-          var key = stopped ? "startScroll" : "pauseScroll";
-          toggleClass(toggle, CLASS_ACTIVE, !stopped);
-          setAttribute(toggle, "aria-label", options.i18n[key] || I18N[key]);
-        }
-      }
-  
-      function isPaused() {
-        return !interval || interval.isPaused();
-      }
-  
       return {
-        setup: setup,
-        mount: mount,
-        destroy: destroy,
-        play: play,
-        pause: pause,
-        isPaused: isPaused
-      };
-    }
-  
-    if (typeof window !== "undefined") {
-      window.splide = window.splide || {};
-      window.splide.Extensions = window.splide.Extensions || {};
-      window.splide.Extensions.AutoScroll = AutoScroll;
-    }
-  });
-  //# sourceMappingURL=splide-extension-auto-scroll.js.map
+          setup: Nn,
+          mount: on,
+          destroy: un,
+          play: y,
+          pause: b,
+          isPaused: G
+      }
+  }
+  typeof window < "u" && (window.splide = window.splide || {},
+  window.splide.Extensions = window.splide.Extensions || {},
+  window.splide.Extensions.AutoScroll = $n)
+});
