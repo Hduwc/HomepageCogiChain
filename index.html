@@ -15,6 +15,8 @@
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js" integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js
+"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -175,7 +177,7 @@
             drag: 'free',
             focus: 'center',
             padding: '15px',
-        }).mount();
+        }).mount(window.splide.Extensions);
 
 
         new Splide('.splide1', {
@@ -190,7 +192,7 @@
                 speed: 2,
             },
             padding: '15px',
-        }).mount();
+        }).mount(window.splide.Extensions);
 
         new Splide('.splide2', {
             perPage: 3,
@@ -204,7 +206,7 @@
                 speed: 2,
             },
             padding: '15px',
-        }).mount();
+        }).mount(window.splide.Extensions);
 
     </script>
     <script src="dist1/js/splide.js"></script>

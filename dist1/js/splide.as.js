@@ -392,3 +392,5 @@
   window.splide.Extensions = window.splide.Extensions || {},
   window.splide.Extensions.AutoScroll = $n)
 });
+
+
