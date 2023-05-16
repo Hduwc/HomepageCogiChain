@@ -1,3 +1,7 @@
+@import 'variable';
+@import 'mixin';
+
+
 * {
     padding: 0 auto;
     margin: 0  auto;
@@ -43,7 +47,7 @@
     background-clip: padding-box;
     border: 1px solid transparent;
     border-radius: 20px;
-    background-color: #0f0f12;
+    background-color: $mainColor3;
     display: flex;
     height: 40px;
     padding-left: 0px;
@@ -78,7 +82,7 @@
 .header__navbar-link, .button {
     font-size: 1rem;
     display: inline-block;
-    color: #ffffff;
+    color: $mainColor2;
     font-weight: 500;
     line-height: 15px;
     font-style: bold;
@@ -122,7 +126,7 @@
     height: 386px;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: $mainColor2;
     justify-content: space-between;
     margin: 0 auto;
     top: 50%;
@@ -184,20 +188,20 @@
     font-size: 16px;
 }
 #submit .submit1 #create{
-    border: 1px solid #4B50E6;
+    border: 1px solid $mainColor1;
     border-radius: 50px;
 }
 #submit .submit1:hover #create{
-    background-color: #4B50E6;
+    background-color: $mainColor1;
     transition: all 0.3s;
 }
 #submit .submit1 #sign{
-    color: black;
+    color: $mainColor3;
     border-radius: 50px;
-    background: white 
+    background: $mainColor2; 
 }
 #submit .submit1:hover #sign{
-    color: #4B50E6;   
+    color: $mainColor1;   
 }
 
 
@@ -218,18 +222,18 @@
     background: linear-gradient(180deg, #000A0F 0%, rgba(20, 20, 31, 0) 28.44%);
     position: absolute;
     height: 810px;
-    top: 0px;
     opacity: 0.95;
+    top: 0px;
     z-index: 1;
 }
 .mask2 {
     position: absolute;
     height: 810px;
-    bottom: 0px;
     background: linear-gradient(180deg, #040E23 1.8%, rgba(20, 20, 31, 0) 32.84%);
     opacity: 0.95;
-    transform: matrix(1, 0, 0, -1, 0, 0);
     z-index: 1;
+    bottom: 0px;
+    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 img{
     height: auto;
@@ -241,6 +245,7 @@ img{
     width: 100%;
     height: 100%;
     object-fit: cover; 
+    border-radius: 30px;
 }
 .col1, .col2, .col3 {
     /* display: grid;
@@ -278,7 +283,7 @@ img{
     color: #8A8AA0;
 }
 .community__footer-item a:hover {
-    color: #FFFFFF;
+    color: $mainColor2;
     transition: all 0.3s;
 }
 .social__footer{
@@ -299,7 +304,7 @@ img{
 #toggle{
     display: none;
     background: none;
-    color: #FFFFFF;
+    color: $mainColor2;
     text-align: right;
     padding: 10px;
     font-size: 20px;
@@ -380,27 +385,21 @@ img{
     padding: 0 !important;
 }
 .header1 {
-    background-color: #0D0D11;
+    background-color: $mainColor3;
 }
 .footer1 {
-    background-color: #0D0D11;
+    background-color: $mainColor3;
 }
 @media screen and (min-width: 1920px){
     .content  {
-        width: 1920px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        @include overlayWidth();
         background-image: none;
     }
     .header__navbar {
-        width: 1920px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
+        @include overlayWidth();
     }
     .footer {
-        width: 1920px !important;
-        margin-left: auto !important;
-        margin-right: auto !important;    
+        @include overlayWidth();    
     }
     .container-fluid1 {
         background-image: url(../img/IMGBackground.png);
